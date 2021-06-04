@@ -1,6 +1,6 @@
 import React from 'react';
-import './App.css';
-import Repository from './components/Repository'
+import '../css/App.css';
+import Repository from './Repository'
 
 function App() {
   return (
