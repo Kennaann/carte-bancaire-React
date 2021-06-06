@@ -1,12 +1,16 @@
 import React from 'react';
-import '../css/Cards.css'
+import '../css/Cards.css';
+import '../visa.png'
 
 const Card = (props) => {
+
+
     return(
-        <div className="card">
+        <div onClick={props.handleClick} className="card">
             <p className="number-input">{props.number}</p>
             <p className="name-input">{props.name}</p>
             <p className="date-input">{props.date}</p>
+            <img src={props.logo} alt="logo cb" />
         </div>
     )
 }

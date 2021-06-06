@@ -1,5 +1,5 @@
 .card {
-    width: 200px;
+    width: 180px;
     height: 100px;
     margin: 10px auto;
     border-radius: 0.5em;
@@ -12,7 +12,9 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
-  }
+
+    position: relative;
+}
 
 .number-input {
   margin: 1em;
@@ -26,4 +28,10 @@
 .date-input {
   margin: 0 0 1em 1em;
 }
-  
+
+.card img {
+  transform: scale(0.6);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}

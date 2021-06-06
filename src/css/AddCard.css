@@ -1,0 +1,84 @@
+.add-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  
+    width: 70%;
+    background-color: #252734;
+    border-radius: 0 10px 10px 0;
+  }
+
+/*Formulaire*/
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+}
+
+input {
+    border: none;
+    border-bottom: rgba(119, 136, 153,0.5) 1px solid;
+    color: white;
+    background-color: #252734;
+    padding: 2em 0;
+    width: 100%;
+}
+
+input:focus {
+    outline: none;
+}
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border-bottom: rgba(119, 136, 153, 0.5) 1px solid;
+  -webkit-text-fill-color: white;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+::placeholder {
+    color: white;
+}
+ 
+.add-button {
+    width: 90%;
+    cursor: pointer;
+    border: none;
+    color: white;
+    background-color: rgba(12, 16, 24, 0.8);
+    padding: 20px;
+    border-radius: 0.5em;
+ }
+
+/*Images*/
+
+img {
+  width: 60px;
+  height: 35px;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.img-wrapper {
+  display: flex;
+  justify-content: space-between;
+
+  width: 60%;
+}
+
+img.active {
+  background-color: rgba(12, 16, 24, 0.8);
+}
+
+.add-logo {
+    font-size: 3em;
+    font-weight: 900;
+    margin: -25px;
+}

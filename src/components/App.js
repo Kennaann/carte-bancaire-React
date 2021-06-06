@@ -1,11 +1,11 @@
 import React from 'react';
 import '../css/App.css';
-import Repository from './Repository'
+import AddCard from './AddCard'
 
 function App() {
   return (
     <div className="App">
-      <Repository />
+      <AddCard />
     </div>
   );
 }

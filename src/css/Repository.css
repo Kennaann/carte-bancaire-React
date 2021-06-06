@@ -1,72 +1,35 @@
 .repository {
-    margin: 10vh auto;
-    display: flex;
+  margin: 10vh auto;
+  display: flex;
   
-    width: 800px;
-    height: 500px;
-    background-color: lightblue;
-  }
-  
-  .repList {
-    width: 30%;
-    height: 100%;
-
-    background-color: #252734;
-    overflow-y: scroll;
-    overflow-x: hidden;
-  }
-  
-  .addCard {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-  
-    width: 70%;
-    background-color: #252734;
-  }
-
-/*Formulaire*/
-
-  .form {
-    display: flex;
-    flex-direction: column;
-
-    width: 90%;
-  }
-input {
-    border: none;
-    border-bottom: rgba(119, 136, 153,0.5) 1px solid;
-    color: white;
-    background-color: #252734;
-    padding: 2em 0;
+  width: 700px;
+  height: 550px;
+  border-radius: 10px;
 }
 
-input:focus {
-    outline: none;
+.rep-wrapper {
+  width: 30%;
 }
 
-/* Change Autocomplete styles in Chrome*/
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
-  border-bottom: rgba(119, 136, 153, 0.5) 1px solid;
-  -webkit-text-fill-color: white;
-  transition: background-color 5000s ease-in-out 0s;
+.rep-list {
+  height: 70%;
+  border-radius: 10px 0 0 0;
+  background-color: #292C3A;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
-::placeholder {
-    color: white;
+.rep-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 30%;
+  margin: 0;
+  color: white;
+  background-color: #292C3A;
+  border-radius: 0 0 0 10px;
 }
- button {
-    width: 90%;
-    cursor: pointer;
-    border: none;
-    color: white;
-    background-color: rgb(12, 16, 24);
-    padding: 20px;
-    border-radius: 0.5em;
- }
+  
