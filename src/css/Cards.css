@@ -4,8 +4,8 @@
     margin: 10px auto;
     border-radius: 0.5em;
     
+    background-color: #14161f;
     color: white;
-    background-color: #EF3E5C;
     font-size: x-small;
 
     display: flex;
@@ -14,6 +14,10 @@
     align-items: flex-start;
 
     position: relative;
+}
+
+.card.active {
+  background-color: #EF3E5C;
 }
 
 .number-input {

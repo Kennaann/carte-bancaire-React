@@ -17,37 +17,44 @@ class AddCard extends Component {
             {cardName: 'Léa POTIER',
             cardNumber: '0000 0000 0000 0000',
             cardDate: '00/00',
-            cardLogo: mastercard},
+            cardLogo: mastercard,
+            className: 'card'},
             
             {cardName: 'Bertrand DUBOIS',
             cardNumber: '1234 1234 1234 1234',
             cardDate: '12/12',
-            cardLogo: visa},
+            cardLogo: visa,
+            className: 'card'},
         
             {cardName: 'Quentin CARDON',
             cardNumber: '4321 4321 4321 4321',
             cardDate: '09/00',
-            cardLogo: discover}], 
+            cardLogo: discover,
+            className: 'card'}], 
         
         changedCard: {
             cardName: '', 
             cardNumber: '',
             cardDate: '',
-            cardLogo: visa
+            cardLogo: visa,
+            className: 'card active'
         }
     }
 
     createCard = () => {
+        
         let changedName = this.state.changedCard.cardName
         let changedNumber = this.state.changedCard.cardNumber
         let changedDate = this.state.changedCard.cardDate
         let changedLogo = this.state.changedCard.cardLogo
+        let changedClass = this.state.changedCard.className
         
         let stateArray = this.state.cards
         let changedArray = [{cardName: changedName,
                             cardNumber: changedNumber,
                             cardDate: changedDate,
-                            cardLogo: changedLogo}]
+                            cardLogo: changedLogo,
+                            className: changedClass}]
         
         let finalArray = changedArray.concat(stateArray)
         
@@ -71,6 +78,8 @@ class AddCard extends Component {
             this.setState({
             cards: finalArray
             })
+
+
         }
     }
 
@@ -80,6 +89,7 @@ class AddCard extends Component {
         const number = document.getElementById('number').value
         const date = document.getElementById('date').value
         const logo = this.state.changedCard.cardLogo
+        const cardClass = this.state.changedCard.className
         
         if(name.match("^[add-zA-Zéèâêîôû ]*$") !== null 
         && number.match("^[0-9 ]*$") !== null 
@@ -89,7 +99,8 @@ class AddCard extends Component {
                     cardName: name,
                     cardNumber: number.replace(/(\d{4})(\d+)/g, '$1 $2'),
                     cardDate: date.replace(/(\d{2})(\d+)/g, '$1/'),
-                    cardLogo: logo
+                    cardLogo: logo,
+                    className: cardClass
                 }
             })
         }
@@ -103,7 +114,7 @@ class AddCard extends Component {
         const visa = document.getElementById('visa')
         const mastercard = document.getElementById('mastercard')
         const discover = document.getElementById('discover')
-        
+
         visa.classList.remove('active')
         mastercard.classList.remove('active')
         discover.classList.remove('active')
@@ -113,14 +124,15 @@ class AddCard extends Component {
         const name = document.getElementById('name').value
         const number = document.getElementById('number').value
         const date = document.getElementById('date').value
-        
+        const cardClass = this.state.changedCard.className
         
         this.setState({
             changedCard: {
                 cardName: name,
                 cardNumber: number,
                 cardDate: date,
-                cardLogo: target.src
+                cardLogo: target.src,
+                className: cardClass
             }
         })
     }
@@ -187,6 +199,7 @@ class AddCard extends Component {
                         number={this.state.changedCard.cardNumber} 
                         date={this.state.changedCard.cardDate}
                         logo={this.state.changedCard.cardLogo}
+                        className={this.state.changedCard.className}
                     />
 
                     <button className="add-button" onClick={this.createCard}>Ajouter une carte</button>

@@ -20,6 +20,7 @@ const RepList = (props) => {
                             number={card.cardNumber} 
                             date={card.cardDate} 
                             logo={card.cardLogo} 
+                            className={card.className}
                         />
                     )
                 })
