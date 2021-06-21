@@ -1,0 +1,23 @@
+.card-function {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
+    width: 70%;
+    background-color: #252734;
+    border-radius: 0 10px 10px 0;
+}
+
+/* texte */
+.card-function > p {
+    font-size: 2rem;
+    font-weight: lighter;
+    margin: 40px 0;
+}
+
+/* card */
+.card-function > div {
+    transform: scale(1.5);
+    margin: 20px;
+}

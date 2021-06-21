@@ -1,36 +1,38 @@
 import React, { Component } from 'react';
 import Card from './Cards';
 import RepList from './RepList';
+import CardFunction from './CardFunction';
 
-import '../css/Repository.css';
 import '../css/AddCard.css';
 
 import visa from '../visa.png';
 import mastercard from '../mastercard.png';
 import discover from '../discover.png';
 
-class AddCard extends Component {
+import { BrowserRouter, Route } from 'react-router-dom';
 
+class AddCard extends Component {
     
     state = {
         cards: [
-            {cardName: 'Léa POTIER',
-            cardNumber: '0000 0000 0000 0000',
-            cardDate: '00/00',
-            cardLogo: mastercard,
-            className: 'card'},
+            // {cardName: 'Léa POTIER',
+            // cardNumber: '0000 0000 0000 0000',
+            // cardDate: '00/00',
+            // cardLogo: mastercard,
+            // className: 'card'},
             
-            {cardName: 'Bertrand DUBOIS',
-            cardNumber: '1234 1234 1234 1234',
-            cardDate: '12/12',
-            cardLogo: visa,
-            className: 'card'},
+            // {cardName: 'Bertrand DUBOIS',
+            // cardNumber: '1234 1234 1234 1234',
+            // cardDate: '12/12',
+            // cardLogo: visa,
+            // className: 'card'},
         
-            {cardName: 'Quentin CARDON',
-            cardNumber: '4321 4321 4321 4321',
-            cardDate: '09/00',
-            cardLogo: discover,
-            className: 'card'}], 
+            // {cardName: 'Quentin CARDON',
+            // cardNumber: '4321 4321 4321 4321',
+            // cardDate: '09/00',
+            // cardLogo: discover,
+            // className: 'card'}
+        ], 
         
         changedCard: {
             cardName: '', 
@@ -38,49 +40,67 @@ class AddCard extends Component {
             cardDate: '',
             cardLogo: visa,
             className: 'card active'
+        },
+
+        cardFunction: {
+            name: "",
+            number: "",
+            date: "",
+            logo: "",
+            className: "card active",
         }
     }
 
     createCard = () => {
         
-        let changedName = this.state.changedCard.cardName
-        let changedNumber = this.state.changedCard.cardNumber
-        let changedDate = this.state.changedCard.cardDate
-        let changedLogo = this.state.changedCard.cardLogo
-        let changedClass = this.state.changedCard.className
+        const stateArray = this.state.cards
+
+        const changedName = this.state.changedCard.cardName
+        const changedNumber = this.state.changedCard.cardNumber
+        const changedDate = this.state.changedCard.cardDate
+        const changedLogo = this.state.changedCard.cardLogo
+        const changedClass = 'card'
         
-        let stateArray = this.state.cards
-        let changedArray = [{cardName: changedName,
+        const changedArray = [{cardName: changedName,
                             cardNumber: changedNumber,
                             cardDate: changedDate,
                             cardLogo: changedLogo,
                             className: changedClass}]
         
-        let finalArray = changedArray.concat(stateArray)
+        const finalArray = changedArray.concat(stateArray)
         
-        if(changedName === "" 
-        && changedNumber === "" 
-        && changedDate === "") {
+        // if(changedName === "" 
+        // && changedNumber === "" 
+        // && changedDate === "") {
             
-            alert('Veuillez remplir le formulaire')
+        //     alert('Veuillez remplir le formulaire')
         
-        } else if(changedName === "" 
-        || changedNumber === "" 
-        || changedDate === ""
-        || changedName.length < 4
-        || changedNumber.length < 19
-        || changedDate.length < 5) {
+        // } else if(changedName === "" 
+        // || changedNumber === "" 
+        // || changedDate === ""
+        // || changedName.length < 4
+        // || changedNumber.length < 19
+        // || changedDate.length < 5) {
             
-            alert("L'un des champs du formulaire est mal renseigné")
+        //     alert("L'un des champs du formulaire est mal renseigné")
         
-        } else {
+        // } else {
             
             this.setState({
-            cards: finalArray
-            })
+                cards: finalArray,
+               
+                //Reset le formulaire
+                changedCard: {
+                    cardName: "",
+                    cardNumber: "",
+                    cardDate: "",
+                    cardLogo: this.state.changedCard.cardLogo,
+                    className: this.state.changedCard.className
+                }})
+        
 
+        // }
 
-        }
     }
 
     changeCard = () => {
@@ -110,7 +130,7 @@ class AddCard extends Component {
     changeImg = (e) => {
         
         //change la classe de l'image cliquée
-        const target = e.target
+        const logo = e.target
         const visa = document.getElementById('visa')
         const mastercard = document.getElementById('mastercard')
         const discover = document.getElementById('discover')
@@ -118,7 +138,7 @@ class AddCard extends Component {
         visa.classList.remove('active')
         mastercard.classList.remove('active')
         discover.classList.remove('active')
-        target.classList.add('active')
+        logo.classList.add('active')
         
         //change l'image dynamiquement
         const name = document.getElementById('name').value
@@ -131,80 +151,117 @@ class AddCard extends Component {
                 cardName: name,
                 cardNumber: number,
                 cardDate: date,
-                cardLogo: target.src,
+                cardLogo: logo.src,
                 className: cardClass
             }
         })
+    }
+
+    // Permet de récupérer la carte clickée puis l'affiche dans une nouvelle page
+    getClikedCard = (e) => {
+
+        //currentTarget me permet de viser l'element parent de l'event.target
+        const name = e.currentTarget.getElementsByClassName('name-input')[0].innerHTML
+        const number = e.currentTarget.getElementsByClassName('number-input')[0].innerHTML
+        const date = e.currentTarget.getElementsByClassName('date-input')[0].innerHTML
+        const logo = e.currentTarget.querySelector('img').src
+        
+            this.setState({
+                cardFunction: {
+                    name: name,
+                    number: number,
+                    date: date,
+                    logo: logo
+                }
+            })
     }
 
 
     render() {
 
         return(
-            <div className="repository">
+            <BrowserRouter>
+                <div className="repository">
                 
-                <RepList CardState={this.state.cards} />
-
-                <div className="add-card">
-                    <form className="form">
-                        <input 
-                            id="name" 
-                            type="text" 
-                            placeholder="Entrez votre nom" 
-                            value={this.state.changedCard.cardName} 
-                            onChange={this.changeCard}
+                    <RepList 
+                        cards={this.state.cards} 
+                        getClikedCard={this.getClikedCard}
                         />
-                        <input 
-                            id="number" 
-                            type="text" 
-                            placeholder="Entrez votre numero de carte" 
-                            maxLength="19" 
-                            value={this.state.changedCard.cardNumber} 
-                            onChange={this.changeCard}
-                        />
-                        <input 
-                            id="date" 
-                            type="text" 
-                            placeholder="MM/AA" 
-                            maxLength="5" 
-                            value={this.state.changedCard.cardDate} 
-                            onChange={this.changeCard} 
-                        />
-                    </form>
                     
-                    <div className="img-wrapper">
-                        <img 
-                            id="visa"
-                            className="active"
-                            src={visa} 
-                            alt="logo visa" 
-                            onClick={this.changeImg} 
-                        />
-                        <img
-                            id="mastercard"
-                            src={mastercard} 
-                            alt="logo mastercard" 
-                            onClick={this.changeImg}
-                        />
-                        <img 
-                            id="discover"
-                            src={discover} 
-                            alt="logo discover" 
-                            onClick={this.changeImg}
-                        />
-                    </div>
+                    <Route exact path="/">
+                        <div className="add-card">
+                            <form className="form" id="form" >
+                                <input 
+                                    id="name" 
+                                    type="text" 
+                                    placeholder="Entrez votre nom" 
+                                    value={this.state.changedCard.cardName} 
+                                    onChange={this.changeCard}
+                                />
+                                <input 
+                                    id="number" 
+                                    type="text" 
+                                    placeholder="Entrez votre numero de carte" 
+                                    maxLength="19" 
+                                    value={this.state.changedCard.cardNumber} 
+                                    onChange={this.changeCard}
+                                />
+                                <input 
+                                    id="date" 
+                                    type="text" 
+                                    placeholder="MM/AA" 
+                                    maxLength="5" 
+                                    value={this.state.changedCard.cardDate} 
+                                    onChange={this.changeCard} 
+                                />
+                            </form>
+                            
+                            <div className="img-wrapper">
+                                <img 
+                                    id="visa"
+                                    className="active"
+                                    src={visa} 
+                                    alt="logo visa" 
+                                    onClick={this.changeImg} 
+                                />
+                                <img
+                                    id="mastercard"
+                                    src={mastercard} 
+                                    alt="logo mastercard" 
+                                    onClick={this.changeImg}
+                                />
+                                <img 
+                                    id="discover"
+                                    src={discover} 
+                                    alt="logo discover" 
+                                    onClick={this.changeImg}
+                                />
+                            </div>
 
-                    <Card 
-                        name={this.state.changedCard.cardName} 
-                        number={this.state.changedCard.cardNumber} 
-                        date={this.state.changedCard.cardDate}
-                        logo={this.state.changedCard.cardLogo}
-                        className={this.state.changedCard.className}
-                    />
+                            <Card 
+                                name={this.state.changedCard.cardName} 
+                                number={this.state.changedCard.cardNumber} 
+                                date={this.state.changedCard.cardDate}
+                                logo={this.state.changedCard.cardLogo}
+                                className={this.state.changedCard.className}
+                            />
 
-                    <button className="add-button" onClick={this.createCard}>Ajouter une carte</button>
+                            <button className="add-button" onClick={this.createCard}>Ajouter une carte</button>
+                        </div>
+                    </Route>
+
+                    <Route path="/CardFunction">
+                        <CardFunction 
+                            name={this.state.cardFunction.name} 
+                            number={this.state.cardFunction.number} 
+                            date={this.state.cardFunction.date} 
+                            logo={this.state.cardFunction.logo}
+                        />
+                    </Route>
+                    
                 </div>
-            </div>
+            </BrowserRouter>
+            
         )
     }
 }

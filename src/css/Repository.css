@@ -19,18 +19,6 @@
   overflow-x: hidden;
 }
 
-.rep-button {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  width: 100%;
-  height: 30%;
-  margin: 0;
-  color: white;
-  background-color: #292C3A;
-  border-radius: 0 0 0 10px;
-  cursor: pointer;
+.rep-list > a {
+  text-decoration: none;
 }
-  

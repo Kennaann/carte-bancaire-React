@@ -5,7 +5,7 @@ import '../visa.png'
 const Card = (props) => {
 
     return(
-        <div onClick={props.handleClick} className={props.className}>
+        <div className={props.className}>
             <p className="number-input">{props.number}</p>
             <p className="name-input">{props.name}</p>
             <p className="date-input">{props.date}</p>
