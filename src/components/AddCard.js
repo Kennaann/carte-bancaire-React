@@ -15,23 +15,23 @@ class AddCard extends Component {
     
     state = {
         cards: [
-            // {cardName: 'Léa POTIER',
-            // cardNumber: '0000 0000 0000 0000',
-            // cardDate: '00/00',
-            // cardLogo: mastercard,
-            // className: 'card'},
+            {cardName: 'Léa POTIER',
+            cardNumber: '0000 0000 0000 0000',
+            cardDate: '00/00',
+            cardLogo: mastercard,
+            className: 'card'},
             
-            // {cardName: 'Bertrand DUBOIS',
-            // cardNumber: '1234 1234 1234 1234',
-            // cardDate: '12/12',
-            // cardLogo: visa,
-            // className: 'card'},
+            {cardName: 'Bertrand DUBOIS',
+            cardNumber: '1234 1234 1234 1234',
+            cardDate: '12/12',
+            cardLogo: visa,
+            className: 'card'},
         
-            // {cardName: 'Quentin CARDON',
-            // cardNumber: '4321 4321 4321 4321',
-            // cardDate: '09/00',
-            // cardLogo: discover,
-            // className: 'card'}
+            {cardName: 'Quentin CARDON',
+            cardNumber: '4321 4321 4321 4321',
+            cardDate: '09/00',
+            cardLogo: discover,
+            className: 'card'}
         ], 
         
         changedCard: {
@@ -69,22 +69,22 @@ class AddCard extends Component {
         
         const finalArray = changedArray.concat(stateArray)
         
-        // if(changedName === "" 
-        // && changedNumber === "" 
-        // && changedDate === "") {
+        if(changedName === "" 
+        && changedNumber === "" 
+        && changedDate === "") {
             
-        //     alert('Veuillez remplir le formulaire')
+            alert('Veuillez remplir le formulaire')
         
-        // } else if(changedName === "" 
-        // || changedNumber === "" 
-        // || changedDate === ""
-        // || changedName.length < 4
-        // || changedNumber.length < 19
-        // || changedDate.length < 5) {
+        } else if(changedName === "" 
+        || changedNumber === "" 
+        || changedDate === ""
+        || changedName.length < 4
+        || changedNumber.length < 19
+        || changedDate.length < 5) {
             
-        //     alert("L'un des champs du formulaire est mal renseigné")
+            alert("L'un des champs du formulaire est mal renseigné")
         
-        // } else {
+        } else {
             
             this.setState({
                 cards: finalArray,
@@ -99,7 +99,7 @@ class AddCard extends Component {
                 }})
         
 
-        // }
+        }
 
     }
 
